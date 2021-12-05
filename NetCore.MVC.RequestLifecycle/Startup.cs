@@ -1,10 +1,10 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCore.MVC.RequestLifecycle.Middleware;
 
 namespace NetCore.MVC.RequestLifecycle
 {
@@ -26,6 +26,7 @@ namespace NetCore.MVC.RequestLifecycle
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            /*
             //Custom middleware 0
             app.Map("/hello-world", SayHello);
 
@@ -49,7 +50,10 @@ namespace NetCore.MVC.RequestLifecycle
                 await context.Response.WriteAsync($"Hello world, from middleware: {context.Items["greeting"]}");
             });
 
+            */
 
+            //Custom middleware
+            app.UseFeatureFlagsMiddleware();
 
 
             //Default configurations
