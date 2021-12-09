@@ -72,6 +72,9 @@ namespace NetCore.MVC.RequestLifecycle
 
             app.UseRouting();
 
+            //Custom 404 middleware feature switch
+            app.UseMiddleware<FeatureSwitchAuthMiddleware>();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
