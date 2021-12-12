@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NetCore.MVC.RequestLifecycle.Filters;
 using NetCore.MVC.RequestLifecycle.Models;
 
 namespace NetCore.MVC.RequestLifecycle.Controllers
 {
+    //[OutageAuthorizationFilter] will not work since it has a custom controller
+    [TypeFilter(typeof(OutageAuthorizationFilter))] //This way the dependencies are solved
+    //Slight difference with ResourceFilter -> to explore
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -28,7 +28,7 @@ namespace NetCore.MVC.RequestLifecycle.Controllers
             return View();
         }
 
-        [Route("/contact-us", Name ="Contact")]
+        [Route("/contact-us", Name = "Contact")]
         public IActionResult Contact() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
