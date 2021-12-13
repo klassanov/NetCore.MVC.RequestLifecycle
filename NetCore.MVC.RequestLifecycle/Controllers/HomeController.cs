@@ -31,6 +31,13 @@ namespace NetCore.MVC.RequestLifecycle.Controllers
         [Route("/contact-us", Name = "Contact")]
         public IActionResult Contact() => View();
 
+        [HttpPost]
+        [Route("/contact-us", Name ="Contact")]
+        public IActionResult Contact(ContactViewModel contactInfo)
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
