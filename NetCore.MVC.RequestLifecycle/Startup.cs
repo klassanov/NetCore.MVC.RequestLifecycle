@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetCore.MVC.RequestLifecycle.Middleware;
+using NetCore.MVC.RequestLifecycle.ModelBinding;
 
 namespace NetCore.MVC.RequestLifecycle
 {
@@ -17,10 +18,14 @@ namespace NetCore.MVC.RequestLifecycle
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        //This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options => 
+            {
+                //Register the model binder provider at index 0 so that it can be the first
+                options.ModelBinderProviders.Insert(0, new CSVModelBinderProvider());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
