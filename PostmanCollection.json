@@ -1,0 +1,44 @@
+{
+  "info": {
+    "_postman_id": "6fbc3ae2-ffdd-4bb4-9c0b-a5dfc3749c05",
+    "name": "Pluralsight",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CSV Data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "csvcontent",
+              "value": "coffee,10,to drink\nsandwich,5,to eat\nherbalife,2,enjoy",
+              "type": "text"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:46866/order/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "46866",
+          "path": [
+            "order",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

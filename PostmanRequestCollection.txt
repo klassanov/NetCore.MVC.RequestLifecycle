@@ -1,1 +1,0 @@
-Export the postman request collection and put it in this folder
